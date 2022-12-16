@@ -1,0 +1,44 @@
+{% extends 'buapp/base.html' %}
+{% load static %}
+{% block contant  %}
+
+
+<a href="{% url 'timetable' %}"></a>
+    <center>
+    <h1>Find Timetable</h1>
+    <hr/>
+    <form method="GET">
+         
+        <select name="branch">
+            <option selected disabled=true>--Select Branch</option>
+            {% for b in opbranch %}
+            <option>{{b.branch}}</option>
+            {% endfor %}
+           
+        </select>
+        <select name="sem">
+            <option selected disabled=true>--Select Sem</option>
+            {% for s in opsem %}
+            <option>{{s.sem}}</option>
+            {% endfor %}      
+        </select>
+
+        <input type="submit" value="Search"/>
+        <table border="2">
+            <tr>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Download</th>
+
+            </tr>
+            {% for result in timetableresult %}
+            <tr>
+                <td>{{result.branch}}</td>
+                <td>{{result.sem}}</td>
+                <td><a href="{{result.syllabus_pdf.url}}">DownLoad</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    </center>
+{% endblock  %}
