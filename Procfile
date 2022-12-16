@@ -1,1 +1,1 @@
-web: gunicorn BUversity.wsgi --log-file--
+web: gunicorn BUversity.wsgi
